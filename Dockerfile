@@ -225,7 +225,7 @@ ENTRYPOINT ["/gluetun-entrypoint"]
 EXPOSE 8000/tcp 8888/tcp 8388/tcp 8388/udp
 HEALTHCHECK --interval=5s --timeout=5s --start-period=10s --retries=3 CMD /gluetun-entrypoint healthcheck
 ARG TARGETPLATFORM
-RUN apk add --no-cache --update -l wget && \
+RUN apk add --no-cache --update -l wget curl && \
     apk add --no-cache --update -X "https://dl-cdn.alpinelinux.org/alpine/v3.17/main" openvpn\~2.5 && \
     mv /usr/sbin/openvpn /usr/sbin/openvpn2.5 && \
     apk del openvpn && \
